@@ -23,7 +23,7 @@ export default function UserButton() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Avatar>
-              <AvatarImage src={session?.user?.image!} />
+              <AvatarImage src={session?.user?.image ?? ""} />
               <AvatarFallback>
                 {getFirstTwoCapitalLetters(session?.user?.name)}
               </AvatarFallback>
