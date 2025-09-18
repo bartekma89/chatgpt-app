@@ -28,13 +28,13 @@ export async function getCompletion(
 
   console.log("chat id", { chatId, id });
 
-  if (!chatId) {
+  if (!chatId && session?.user?.email) {
     chatId = await createChat(
-      session?.user?.email!,
+      session?.user.email,
       messageHistory[0].content,
       messages
     );
-  } else {
+  } else if (chatId) {
     await updateChat(chatId, messages);
   }
 
