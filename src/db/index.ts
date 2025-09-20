@@ -15,8 +15,6 @@ export async function createChat(
         RETURNING id
     `;
 
-  console.log("createing chat", chat);
-
   const chatId = chat.id;
 
   for (const msg of msgs) {
@@ -96,15 +94,11 @@ export async function getMessages(chatId: number) {
 }
 
 export async function updateChat(chatId: number, msgs: Message[]) {
-  console.log("updating chat", chatId);
-
   await sql`
       DELETE FROM messages WHERE chat_id = ${chatId}
     `;
 
   for (const msg of msgs) {
-    console.log(msg);
-
     await sql`
             INSERT INTO messages (chat_id, role, content) VALUES (${chatId}, ${msg.role}, ${msg.content})
         `;

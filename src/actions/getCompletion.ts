@@ -26,8 +26,6 @@ export async function getCompletion(
 
   let chatId = id;
 
-  console.log("chat id", { chatId, id });
-
   if (!chatId && session?.user?.email) {
     chatId = await createChat(
       session?.user.email,
