@@ -33,7 +33,7 @@ export async function getChat(
   chatId: number
 ): Promise<ChatWithMesseges | null> {
   const chats = await sql`
-        SELECT * FROM chats WHERE chat_id = ${chatId}
+        SELECT * FROM chats WHERE id = ${chatId}
     `;
 
   if (!chats[0]) {
@@ -103,6 +103,8 @@ export async function updateChat(chatId: number, msgs: Message[]) {
     `;
 
   for (const msg of msgs) {
+    console.log(msg);
+
     await sql`
             INSERT INTO messages (chat_id, role, content) VALUES (${chatId}, ${msg.role}, ${msg.content})
         `;
