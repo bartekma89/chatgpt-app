@@ -11,10 +11,8 @@ export default async function ChatMenu() {
   let chats: Chat[] = [];
 
   if (session?.user?.email) {
-    chats = await getChats(session?.user?.email!);
+    chats = await getChats(session?.user?.email);
   }
-
-  console.log(chats);
 
   return (
     <>
