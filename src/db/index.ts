@@ -53,11 +53,11 @@ export async function getChat(
 }
 
 export async function getChats(userEmail: string) {
-  const [chats] = await sql`
+  const chats = await sql`
         SELECT * FROM chats WHERE user_email = ${userEmail}
     `;
 
-  return chats as Chat[];
+  return chats as unknown as Chat[];
 }
 
 export async function getChatWithMessages(
